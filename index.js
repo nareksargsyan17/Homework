@@ -1,177 +1,98 @@
 "use strict";
 
-const app = {
-	restaurantDetails: [
-		{ address: "Երևան, Թումանյան 14" },
-		{ telNumber: "015 12-23-45" },
-		{ mail: "info@template.am" },
-		{ facebook: "http://facebook.com/" },
-		{ instagram: "http://instagram.com/" },
-		{ type: "Ռեստորան" },
-		{ isDelivery: true },
-		{ isOpen: true }
-	],
-	restaurantStaff: [
-		{ security: "Էդգար Գեվորգյան" },
-		{ security: "Արսեն Ավագյան" },
-		{ waiter: "Մելքոն Դանիելյան" },
-		{ waiter: "Ալիսա Պողոսյան" },
-		{ waiter: "Նելլի Դավթյան" },
-		{ waiter: "Քրիստինե Արսենյան" },
-		{ barman: "Տիգրան Ռուբենյան" },
-		{ barman: "Անի Առուստամյան" },
-		{ cook: "Կարինե Տոնոյան" },
-		{ cook: "Արտակ Ադամյան" },
-		{ administrator: "Լիկա Ավագյանց" },
-		{ courier: "Սամսոն Խաչատրյան" },
-		{ hostess: "Ալիսա Սուրենյանց" },
-		{ customer: "Մանե Սարգսյան" }
-	],
-	restaurantMenu: [
-		{
-			type: "Տաք ուտեստներ",
-			item1: "Խոզի Խորոված",
-			item2: "Հավի Խորոված",
-			item3: "Ճտի Տապակա ֆրիով",
-			item4: "Ձկան Խորոված",
-			item5: "Թփով Տոլմա",
-			item6: "Կաղամբով Տոլմա",
-			item7: "Քյուֆթա"
-		},
-		{
-			type: "Աղցաններ",
-			item1: "Մայրաքաղաքային",
-			item2: "Հունական",
-			item3: "Ամառային",
-			item4: "Ցեզար",
-			item5: "Վինեգրեդ",
-			item6: "Խեցգետնով",
-			item7: "Բազուկով"
-		},
-		{
-			type: "Ալկոհոլային Խմիչքներ",
-			item1: "Օղի",
-			item2: "Գինի",
-			item3: "Կոնյակ",
-			item4: "Վիսկի",
-			item5: "Լիկյոր",
-			item6: "Տեկիլա",
-			item7: "Ռոմ"
-		},
-		{
-			type: "Հյութեր և Զովացուցիչ Ըմպելիքներ",
-			item1: "Տնական Կոմպոտ",
-			item2: "Կոկա-Կոլա",
-			item3: "Ֆանտա",
-			item4: "Սփրայթ",
-			item5: "Սեվըն Ափ",
-			item6: "Թան",
-			item7: "Լիմոնադ"
-		},
-		{
-			type: "Խմորեղեններ",
-			item1: "Միկադո",
-			item2: "Սնիկերս",
-			item3: "Տղամարդու Իդեալ",
-			item4: "Տիրամիսու",
-			item5: "Շոկոլադե",
-			item6: "Մրգային",
-			item7: "Բրաունի"
-		}
-	],
-	callCenter(address, telNumber, isDelivery, isOpen, type) {
-		isOpen = app.restaurantDetails[7].isOpen === true ? `
-	Բարև Ձեզ, Ձեզ սպասարկում է ${app.restaurantStaff[13].customer}ը
-    ${address = app.restaurantDetails[0].address !== undefined ?
-				"Մեր հասցեն է " + app.restaurantDetails[0].address :
-				"Կներեք, մենք հասցե չունենք"
-			}
-    ${telNumber = app.restaurantDetails[1].telNumber !== undefined ?
-				"Մեր հեռախոսահամարն է " + app.restaurantDetails[1].telNumber :
-				"Կներեք, մենք չունենք հեռախոսահամար"
-			}
-    ${isDelivery = app.restaurantDetails[6].isDelivery === true ?
-				"Այո, կարող ենք իրականացնել Ձեր պատվերը" :
-				"Կներեք, բայց մեր առաքիչը զբաղված է, պետք է դուք մոտենաք"
-			}
-    ${isOpen = "Այո, բաց ենք ժամը 9:00-24:00:"
-			}
-			` : "Մեր ռեստորանը փակ է, խնդրում ենք զանգահարել ժամը 9:00-24:00, Շնորհակալություն";
-		return isOpen;
-	},
-	isOpened(start, end, now) {
-		now >= start && now < end ?
-			app.restaurantDetails[7].isOpen = true :
-			app.restaurantDetails[7].isOpen = false;
-	},
-	order(client) {
-		return `Բարև ձեզ, քանի որ ${app.restaurantStaff[9].cook}ը այսօր աշխատանքի է ես ցանկանում եմ
-			${app.restaurantMenu[0].type}ից 1 բաժին ${client[0]}, 
-			${app.restaurantMenu[1].type}ից 1 բաժին ${client[1]},
-			${app.restaurantMenu[2].type}ից 1 շիշ ${client[2]},
-			${app.restaurantMenu[3].type}ից 1 շիշ ${client[3]}
-			${app.restaurantMenu[4].type}ից 1 բաժին ${client[4]}`;
-	},
-	rnWaiter(randomWaiter, menu2) {
-		return ` 
-		Բարև ձեզ ես ${randomWaiter}ն եմ:
-		Ցավում եմ, բայց գարեջուր չունենք
-		կներկայացնեմ մեր մենյուն 
-		${menu2},
-		ցանկանալու դեպքում հրավիրեք,
-		Շնորհակալություն`;
+let arr = [];
+let i = 0;
+let randomNumber = Math.ceil(Math.random()*15);
+while(i<randomNumber){
+	arr[i] = i*3+randomNumber/5;
+	i++;
+}
+console.log(arr);
+let p = Math.PI;
+let count = 1;
+while(p>count){
+	console.log(p*p/count);
+	count+= 0.3;
+}
+
+let arr1 = [1,5,8,7,6,5,47,45,12,54,78,96,47,25,1,3];
+i = 1;
+let max  = arr1[0];
+while(i<arr1.length){
+	if(max<arr1[i]){
+		max = arr1[i];
 	}
-};
-let nowDate = new Date();
-let nowHours = nowDate.getHours();
-app.isOpened(9, 24, nowHours);
-const client = app.callCenter();
-console.log(client);
-let day = nowDate.getDay();
-let isCookist;
-function select(isCookist, day) {
-	switch (day) {
-		case 0: isCookist = app.restaurantStaff[9].cook; break;
-		case 1: isCookist = app.restaurantStaff[8].cook; break;
-		case 2: isCookist = app.restaurantStaff[9].cook; break;
-		case 3: isCookist = app.restaurantStaff[8].cook; break;
-		case 4: isCookist = app.restaurantStaff[9].cook; break;
-		case 5: isCookist = app.restaurantStaff[8].cook; break;
-		case 6: isCookist = app.restaurantStaff[9].cook; break;
-		default: return "error";
+	i++;
+}
+console.log(max);
+
+let str = "Hovhannes Tumanyan";
+i = 0;
+while(i<str.length){
+	if(str[i]==="T"){
+		console.log(i);
 	}
-	return isCookist;
+	i++;
 }
-const cookistSelect = select(isCookist, day);
-function getRandomProperty(restaurantMenu) {
-	const keys = Object.keys(restaurantMenu);
-	return restaurantMenu[keys[Math.ceil(Math.random() * (keys.length - 1))]];
+
+
+let numm = 57;
+i = 0;
+while(i<numm){
+	console.log();
+	i++;
 }
-if (cookistSelect === "Արտակ Ադամյան") {
-	const client1 = [
-		getRandomProperty(app.restaurantMenu[0]),
-		getRandomProperty(app.restaurantMenu[1]),
-		getRandomProperty(app.restaurantMenu[2]),
-		getRandomProperty(app.restaurantMenu[3]),
-		getRandomProperty(app.restaurantMenu[4])
-	];
-	console.log(app.order(client1));
-}
-function randomWaiters(min, max, restaurantStaff) {
-	const keys = Object.keys(restaurantStaff);
-	return keys[Math.floor(Math.random() * (max - min)) + min];
-}
-const randomNum = randomWaiters(2, 6, app.restaurantStaff);
-const randomWaiter = app.restaurantStaff[randomNum].waiter;
-const menus = app.restaurantMenu[2];
-function menu(menus) {
-	const keys = Object.keys(menus);
-	const menu = [];
-	for (let i = 0; i < keys.length; i++) {
-		menu[i] = menus[keys[i]];
+
+let arr2 = [2,5,8,-7,0,9,-7,8,8,4,6,-58,0,-98,7,9,5,4,58];
+let sum = 0;
+count = 0;
+for(let i = 0;i<arr2.length;i++){
+	if(arr2[i]>0){
+		sum = sum + arr2[i];
+		count ++;
 	}
-	return menu;
 }
-const menu2 = menu(menus);
-const client2 = app.rnWaiter(randomWaiter, menu2);
-console.log(client2);
+let middle = sum/count;
+console.log(middle);
+
+
+count = 0;
+for(let i = 0;i<arr2.length; i++){
+	if(arr2[i]%2===0){
+		count++;
+	}
+}
+console.log(count);
+let j=1;
+let x=[0,1];
+for(let i = 0; i<50; i++){
+	x[i+2]=x[i]+x[j];
+	j++;
+}
+
+for(let i = 0;i<arr2.length;i++){
+	if(arr2[i]%3===0 && arr2[i]%2===0){
+		arr2[i]= "";
+	}
+}	
+console.log(arr2);
+let arr3 = [];
+for(let i = 0;i<50; i++){
+	if((i**2)%5===0){
+		arr3[i]=5;
+	}else{
+	arr3[i]=i;}
+}
+console.log(arr3);
+
+i = 0;
+let num =65;
+do{
+	++i;
+	if(num%i===0){
+		num = num-i;
+	}else{
+		num++;
+	}
+	console.log(num);
+}while(i<num);
