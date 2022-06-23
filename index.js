@@ -47,7 +47,7 @@ function getPythagoras(a, b, c) {
 }
 
 console.log(getPythagoras(10, 5));
- const isPrimeNumber = function(x) {
+const isPrimeNumber = function (x) {
 	if (x >= 2) {
 		if (x % 2 === 0 && x !== 2) {
 			return "Not a Prime Number";
@@ -59,7 +59,7 @@ console.log(getPythagoras(10, 5));
 			return "Not a Prime Number";
 		} else {
 			return "Prime Number";
-		}	
+		}
 	} else {
 		return "Not a Prime Number";
 	}
@@ -118,37 +118,37 @@ console.log(findWordsCount(somePreposition));
 
 const getPrimeNumbersRange = (min, max) => {
 	let numbers = [];
-	let x ;
-	for(let i = min; i <= max; i++){
+	let x;
+	for (let i = min; i <= max; i++) {
 		x = isPrimeNumber(i);
-		if(x === "Prime Number"){
+		if (x === "Prime Number") {
 			numbers.push(i);
 		}
 	}
 	return numbers;
 };
 
-console.log(getPrimeNumbersRange(5,50));
+console.log(getPrimeNumbersRange(5, 50));
 
 const getIncomeAccount = (monthlyBudget, monthlyExpenses, monthlyTaxes) => {
-	if(monthlyBudget > monthlyExpenses + monthlyTaxes){
+	if (monthlyBudget > monthlyExpenses + monthlyTaxes) {
 		let account = monthlyBudget - (monthlyExpenses + monthlyTaxes);
-		return `Your monthly Account is ${account}` ;
-	}else{
+		return `Your monthly Account is ${account}`;
+	} else {
 		return "This month you are have not Account";
 	}
 };
-console.log(getIncomeAccount(5000,2500,1500)); 
+console.log(getIncomeAccount(5000, 2500, 1500));
 
-const isEvenNumber = (x) => x % 2 === 0? "even":"not even";
+const isEvenNumber = (x) => x % 2 === 0 ? "even" : "not even";
 console.log(isEvenNumber(20));
 
 
-const type = (x) => typeof(x);
+const type = (x) => typeof (x);
 console.log(type(""));
 
 const mostGoalScorer = (team) => {
-	switch(team){
+	switch (team) {
 		case "Real Madrid": console.log("Cristiano Ronaldo 450 Goals"); break;
 		case "Barcelona": console.log("Lionel Messi 709 Goals"); break;
 		case "Manchester United": console.log("Wayne Rooney 253 Goals"); break;
