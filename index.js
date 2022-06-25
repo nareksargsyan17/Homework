@@ -1,184 +1,121 @@
 "use strict";
-
-function getRandom(min, max) {
-	let num = Math.floor(Math.random() * (max - min)) + min;
-	return num;
-}
-console.log(getRandom(3, 6));
-
-console.log(getFactorial(10));
-function getFactorial(x) {
-	let factorial;
-	if (x > 0) {
-		factorial = 1;
-	} else {
-		factorial = false;
-	}
-	while (x >= 1) {
-		factorial *= x;
-		x--;
-	}
-	return factorial;
-}
-
-function getTriangleArea(basis, hight) {
-	let area = 0.5 * basis * hight;
-	console.log(area);
-}
-getTriangleArea(5, 8);
-
-function getCircleArea(radius) {
-	let area = Math.PI * radius ** 2;
-	console.log(area);
-}
-getCircleArea(2);
-
-function getPythagoras(a, b, c) {
-	if (a && b !== undefined) {
-		c = Math.sqrt(a ** 2 + b ** 2);
-		return c;
-	} else if (a && c !== undefined) {
-		b = Math.sqrt(c ** 2 - a ** 2);
-		return b;
-	} else {
-		a = Math.sqrt(c ** 2 - b ** 2);
-		return a;
+let count = 0;
+for (let i = 0; i < 5 * 5; i++) {
+	for (let j = 0; j < 5 * 5; j++) {
+		console.log(++count);
 	}
 }
 
-console.log(getPythagoras(10, 5));
-const isPrimeNumber = function (x) {
-	if (x >= 2) {
-		if (x % 2 === 0 && x !== 2) {
-			return "Not a Prime Number";
-		} else if (x % 3 === 0 && x !== 3) {
-			return "Not a Prime Number";
-		} else if (x % 5 === 0 && x !== 5) {
-			return "Not a Prime Number";
-		} else if (x % 7 === 0 && x !== 7) {
-			return "Not a Prime Number";
-		} else {
-			return "Prime Number";
-		}
-	} else {
-		return "Not a Prime Number";
-	}
-};
-isPrimeNumber(23);
-const arr = [5, 7, 8, 9, 5, 7, 3, 4, 5, 7, 8, 9, 4, 6, 1, 2, 3];
-const getMaxNumber = function (x) {
-	let max = x[0];
-	for (let i = 1; i < x.length; i++) {
-		if (max < x[i]) {
-			max = x[i];
+let count1 = 0;
+for (let i = 0; i < 10; i++) {
+	for (let j = 0; j < 10; j++) {
+		for (let k = 0; k < 10; k++) {
+			console.log(++count1);
 		}
 	}
-	return max;
-};
-console.log(getMaxNumber(arr));
+}
 
-const arr1 = [-20, 5, 4, 7, 8, 9, 5, 78, -65, 9, 8, 15, 5, 5, 57, 788, 0];
-const getRange = function (x) {
-	let min = x[0];
-	let max = x[0];
-	for (let i = 1; i < x.length; i++) {
-		if (min > x[i]) {
-			min = x[i];
-		}
-		if (max < x[i]) {
-			max = x[i];
+let count2 = 0;
+for (let i = 0; i < 5; i++) {
+	for (let j = 0; j < 5; j++) {
+		for (let k = 0; k < 5; k++) {
+			for (let l = 0; l < 5; l++) {
+				console.log(++count2);
+			}
 		}
 	}
-	console.log(`This array's range is ${min} to ${max}`);
-};
-getRange(arr1);
+}
 
-const arr2 = [20, 50, 4, 7, 8, 9, 5, 78, 65, 9, 8, 15, 5, 5, 57, 78, 0];
-const getAverageAmount = function (arr) {
-	let sum = 0;
-	for (let i = 0; i < arr.length; i++) {
-		sum += arr[i];
+let i = 0;
+let j = 0;
+let i1 = 0;
+let j1 = 0;
+while (i < 25) {
+	++i1;
+	while (j < 25) {
+		++j1;
+		j++;
 	}
-	let averageAmaount = sum / arr.length;
-	return averageAmaount;
-};
-console.log(getAverageAmount(arr2));
+	j = 0;
+	i++;
+}
+console.log(i1, j1);
 
-let somePreposition = "A preposition is a word or group of words used before a noun, pronoun, or noun phrase to show direction, time, place, location, spatial relationships, or to introduce an object.";
-const findWordsCount = function (str) {
-	let count = 1;
-	for (let i = 0; i < str.length; i++) {
-		if (str[i] === " ") {
-			count++;
+i = 0;
+j = 0;
+let k = 0;
+i1 = 0;
+j1 = 0;
+let k1 = 0;
+while (i < 15) {
+	++i1;
+	while (j < 15) {
+		++j1;
+		while (k < 15) {
+			++k1;
+			k++;
 		}
+		k = 0;
+		j++;
 	}
-	return count;
-};
-console.log(findWordsCount(somePreposition));
+	j = 0;
+	i++;
+}
+console.log(i1, j1, k1);
 
-const getPrimeNumbersRange = (min, max) => {
-	let numbers = [];
-	let x;
-	for (let i = min; i <= max; i++) {
-		x = isPrimeNumber(i);
-		if (x === "Prime Number") {
-			numbers.push(i);
+i = 0;
+j = 0;
+k = 0;
+let l = 0;
+i1 = 0;
+j1 = 0;
+k1 = 0;
+let l1 = 0;
+while (i < 10) {
+	++i1;
+	while (j < 10) {
+		++j1;
+		while (k < 10) {
+			++k1;
+			while (l < 10) {
+				++l1;
+				l++;
+			}
+			l = 0;
+			k++;
 		}
+		k = 0;
+		j++;
 	}
-	return numbers;
-};
+	j = 0;
+	i++;
+}
+console.log(i1, j1, k1, l1);
 
-console.log(getPrimeNumbersRange(5, 50));
-
-const getIncomeAccount = (monthlyBudget, monthlyExpenses, monthlyTaxes) => {
-	if (monthlyBudget > monthlyExpenses + monthlyTaxes) {
-		let account = monthlyBudget - (monthlyExpenses + monthlyTaxes);
-		return `Your monthly Account is ${account}`;
-	} else {
-		return "This month you are have not Account";
-	}
-};
-console.log(getIncomeAccount(5000, 2500, 1500));
-
-const isEvenNumber = (x) => x % 2 === 0 ? "even" : "not even";
-console.log(isEvenNumber(20));
-
-
-const type = (x) => typeof (x);
-console.log(type(""));
-
-const mostGoalScorer = (team) => {
-	switch (team) {
-		case "Real Madrid": console.log("Cristiano Ronaldo 450 Goals"); break;
-		case "Barcelona": console.log("Lionel Messi 709 Goals"); break;
-		case "Manchester United": console.log("Wayne Rooney 253 Goals"); break;
-		case "Manchester City": console.log("Sergio Agüero 260 Goals"); break;
-		case "PSG": console.log("Edinson Cavani 200 Goals"); break;
-		case "Juventus": console.log("Alessandro Del Piero 290 Goals"); break;
+function calculator(a, calc, b) {
+	switch (calc) {
+		case "+": console.log(a + b); break;
+		case "-": console.log(a - b); break;
+		case "*": console.log(a * b); break;
+		case "/": console.log(a / b); break;
+		case "%": console.log(a - b * parseInt(a / b)); break;
 		default: console.log("error");
 	}
-};
-
-mostGoalScorer("Real Madrid");
-
-
-function date() {
-	let data = new Date();
-	let day = data.getDay();
-	return day;
 }
-function mig() {
-	let day = date();
-	switch (day) {
-		case 0: day = "Sunday"; break;
-		case 1: day = "Monday"; break;
-		case 2: day = "Tuesday"; break;
-		case 3: day = "Wednesday"; break;
-		case 4: day = "Thursday"; break;
-		case 5: day = "Friday"; break;
-		case 6: day = "Saturday"; break;
-		default: return "error";
+
+calculator(9, "%", 2);
+
+let result = "";
+let midle = 4;
+for (let i = 1; i <= 7; i += 2) {
+	for (let j = 1; j <= 7; j++) {
+		if (j < midle || j >= i + midle) {
+			result += " ";
+		} else {
+			result += "*";
+		}
 	}
-	return day;
+	midle--;
+	result += "\n";
 }
-console.log(mig());
+console.log(result);
