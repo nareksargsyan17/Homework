@@ -1,55 +1,55 @@
-// //Arrays
-// const arr = ["Apple", "Orange", "Banana", ["Hello", [1, [2]]]];
+//Arrays
+const arr = ["Apple", "Orange", "Banana", ["Hello", [1, [2]]]];
 
-// const [a, b, c, d] = arr;
-// console.log(a, b, c, d); //1
+const [a, b, c, d] = arr;
+console.log(a, b, c, d); //1
 
-// const arr1 = ["1", "2", "3", [".....10", ".....20"]];
+const arr1 = ["1", "2", "3", [".....10", ".....20"]];
 
-// const [a1, b1, c1, [da, db]] = arr1;
-// console.log(a1, b1, c1, da, db); //2
+const [a1, b1, c1, [da, db]] = arr1;
+console.log(a1, b1, c1, da, db); //2
 
-// const arr2 = ["John", "Mari", "Alex", "Henry"];
+const arr2 = ["John", "Mari", "Alex", "Henry"];
 
-// const [john, mari, alex, henry] = arr2;
-// console.log(john, mari, alex, henry); //3
+const [john, mari, alex, henry] = arr2;
+console.log(john, mari, alex, henry); //3
 
-// const arr3 = [[[[[[[1]]]]]], 2, 3, 4];
+const arr3 = [[[[[[[1]]]]]], 2, 3, 4];
 
-// const [[[[[[[a2]]]]]], b2, c2, d2] = arr3;
-// console.log(a2, b2, c2, d2); //4
+const [[[[[[[a2]]]]]], b2, c2, d2] = arr3;
+console.log(a2, b2, c2, d2); //4
 
-// const arr4 = ["ab", "cd", "ef", "gh"];
+const arr4 = ["ab", "cd", "ef", "gh"];
 
-// const [aB, cD, eF, gH] = arr4;
-// console.log(aB, cD, eF, gH); //5
+const [aB, cD, eF, gH] = arr4;
+console.log(aB, cD, eF, gH); //5
 
-// const arr5 = [{ a: 5 }, "25", 125];
+const arr5 = [{ a: 5 }, "25", 125];
 
-// const [a3, b3, c3] = arr5;
-// console.log(a3, b3, c3); //6 
+const [a3, b3, c3] = arr5;
+console.log(a3, b3, c3); //6 
 
-// const arr6 = ["Hello", "Dears", ["Alex", "and", "Lucy"], "!!!"];
+const arr6 = ["Hello", "Dears", ["Alex", "and", "Lucy"], "!!!"];
 
-// const [a4, b4, [c4, d4, e4], f4] = arr6;
-// console.log(a4, b4, c4, d4, e4, f4); //7
+const [a4, b4, [c4, d4, e4], f4] = arr6;
+console.log(a4, b4, c4, d4, e4, f4); //7
 
-// const arr7 = [0, 1, 1, 2, 3, 5];
+const arr7 = [0, 1, 1, 2, 3, 5];
 
-// const [a5, b5, c5, e5, f5, g5] = arr7;
-// console.log(a5, b5, c5, e5, f5, g5); //8 
+const [a5, b5, c5, e5, f5, g5] = arr7;
+console.log(a5, b5, c5, e5, f5, g5); //8 
 
-// const arr8 = ["You", "are", ["so",["so"]], "happy"];
+const arr8 = ["You", "are", ["so",["so"]], "happy"];
 
-// const [a6, b6, [c6, [d6]], e6]  = arr8;
-// console.log(a6, b6, c6, d6, e6); //9
+const [a6, b6, [c6, [d6]], e6]  = arr8;
+console.log(a6, b6, c6, d6, e6); //9
 
-// const arr9 = ["I", "am", "from", [[[[["Armenia"]]]]]];
+const arr9 = ["I", "am", "from", [[[[["Armenia"]]]]]];
 
-// const [a7, b7, c7, [[[[[d7]]]]]] = arr9;
-// console.log(a7, b7, c7, d7);
+const [a7, b7, c7, [[[[[d7]]]]]] = arr9;
+console.log(a7, b7, c7, d7);
 
-//Objects
+Objects
 const obj = {
     name: "Henry",
     lastName: "Ayvazyan",
