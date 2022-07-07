@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 const personalMovieDB = {
 	count: 0,
 	movies: {},
@@ -6,103 +6,84 @@ const personalMovieDB = {
 	genres: [],
 	privat: true,
 	showMyDB() {
-		if (personalMovieDB.privat == false) {
+		if (personalMovieDB.privat === false) {
 			console.log("Այս պահին տվյալները անհասանելի են!!!");
 		} else {
 			console.log(personalMovieDB);
 		}
+		personalMovieDB.isVisibleMyDB();
+	},
+	isVisibleMyDB() {
+		console.log(personalMovieDB.privat);
+		if (personalMovieDB.privat === true) {
+			personalMovieDB.privat = false;
+		} else {
+			personalMovieDB.privat = true;
+		}
+		console.log(personalMovieDB.privat);
 	},
 	yourFavoriteGenres() {
 		for (let i = 0; i < 3; i++) {
 			let genre = prompt(`Ձեր նախընտրելի ժանրը ${i + 1}`, "");
-			genre = genre.trim();
-			if (genre == "" || (typeof genre) === 'object') {
+			if (genre == "" || genre === null || !isNaN(genre) || genre.trim().length > 20) {
 				console.log("Մուտքագրեք ժանրը");
 				i--;
-			} else if (!isNaN(+genre)) {
-				console.log("Դուք չեք կարող թիվ ներմուծել");
-				i--;
-			} else if (genre.length > 20) {
-				console.log("Դուք չեք կարող 20-ից ավել էլեմենտներ օգտագործել");
-				i--;
-			}
-			else {
-				personalMovieDB.genres[i] = genre;
+			} else {
+				personalMovieDB.genres[i] = genre.trim();
 			}
 		}
+		console.log("Ձեր սիրելի ժանրերը.")
+		personalMovieDB.genres.forEach((item, index, array) => {
+			console.log(`Ժանր ${index + 1} - ${item}`);
+		})
 	},
 	filmNameAndPoint() {
 		for (let i = 0; i < 2; i++) {
 			let filmName = prompt("Ո՞ր ֆիլմն եք վերջերս դիտել", "");
-			filmName = filmName.trim();
-			if (filmName == "" || (typeof filmName) === 'object') {
+			if (filmName == "" || filmName === null || !isNaN(filmName) || filmName.length > 20) {
 				console.log("Մուտքագրեք ֆիլմի անունը");
-				i--;
-			} else if (!isNaN(+filmName)) {
-				console.log("Դուք չեք կարող թիվ ներմուծել");
-				i--;
-			} else if (filmName.length > 20) {
-				console.log("Դուք չեք կարող 20-ից ավել էլեմենտներ օգտագործել");
 				i--;
 			} else {
 				for (let j = 0; j < 1; j++) {
-					let filmPoint = prompt("Ինչքա՞ն այդ ֆիլմը կգնահատեիք", "");
-					filmPoint = filmPoint.trim();
-					if (filmPoint == "") {
-						console.log("Դրեք ձեր գնահատականը 0-10");
+					let filmPoint = parseInt(prompt("Ինչքա՞ն այդ ֆիլմը կգնահատեիք", ""));
+					if (filmPoint == "" || filmPoint.length > 20 || filmPoint === null || isNaN(filmPoint) || filmPoint > 10 || filmPoint < 1) {
+						console.log("Դրեք ձեր գնահատականը 1-10");
 						j--;
-					} else if (filmPoint.length > 20) {
-						console.log("Դուք չեք կարող 20-ից ավել էլեմենտներ օգտագործել");
-						j--;
-					}
-					else if (filmPoint > 0 && filmPoint <= 10) {
-						filmPoint = Number(filmPoint);
+					} else {
 						console.log(`ձեր գնահատակնն է ${filmPoint}`);
 						personalMovieDB.movies[filmName] = filmPoint;
-					} else if (filmPoint == "0") {
-						filmPoint = Number(filmPoint);
-						console.log(`ձեր գնահատակնն է ${filmPoint}`);
-						personalMovieDB.movies[a] = filmPoint;
-					} else {
-						console.log("Դրեք ձեր գնահատականը 0-10");
-						j--;
 					}
 				}
 			}
 		}
 	},
 	yourNumberOfFilms() {
-		for (let i = 0; i < 1; i++) {
-			let numberOfFilms = prompt("Քանի՞ ֆիլմ եք դիտել այսօր", "");
-			if (numberOfFilms == "") {
-				console.log("Եթե ֆիլմեր չեք նայել խնդրում եք մուտքագրեք 0");
-				i--;
-			} else if (numberOfFilms.length > 20) {
-				console.log("Դուք չեք կարող 20-ից ավել էլեմենտներ օգտագործել");
-				i--;
-			}
-			else if (numberOfFilms > 0) {
-				numberOfFilms = Number(numberOfFilms);
-				if (numberOfFilms < 10) {
-					console.log("Դուք նայել եք բավականին քիչ ֆիլմեր");
-				} else if (numberOfFilms < 30) {
-					console.log("Դուք ֆիլմի սիրահար եք");
-				} else {
-					console.log("Դուք կինոման եք !!!");
-				}
-				personalMovieDB.count = numberOfFilms;
-			} else if (numberOfFilms == "0") {
-				console.log("Դուք ֆիլմեր դիտել չեք սիրում");
-				numberOfFilms = Number(numberOfFilms);
+		let numberOfFilms = parseInt(prompt("Քանի՞ ֆիլմ եք դիտել այսօր", ""));
+		while (isNaN(numberOfFilms) || numberOfFilms == "" || numberOfFilms === null || numberOfFilms.length > 20 || numberOfFilms < 0) {
+			if (numberOfFilms == 0) {
+				break;
 			} else {
-				console.log("Եթե ֆիլմեր չեք նայել խնդրում եք մուտքագրեք 0");
-				i--;
+				numberOfFilms = parseInt(prompt("Քանի՞ ֆիլմ եք դիտել այսօր", ""));
 			}
 		}
-
+		personalMovieDB.selectYourFilmCategory(numberOfFilms);
+	},
+	selectYourFilmCategory(numberOfFilms) {
+		if (numberOfFilms == 0) {
+			console.log("Դուք այսօր ֆիլմեր չեք դիտել!!");
+		}
+		else if (numberOfFilms < 10) {
+			console.log("Դուք նայել եք բավականին քիչ ֆիլմեր");
+		} else if (numberOfFilms < 30) {
+			console.log("Դուք ֆիլմի սիրահար եք");
+		} else {
+			console.log("Դուք կինոման եք !!!");
+		}
+		personalMovieDB.count = numberOfFilms;
 	}
-};
-personalMovieDB.yourNumberOfFilms();
-personalMovieDB.filmNameAndPoint();
-personalMovieDB.yourFavoriteGenres();
-personalMovieDB.showMyDB();
+}
+const { yourFavoriteGenres, filmNameAndPoint, yourNumberOfFilms, showMyDB } = personalMovieDB;
+yourNumberOfFilms();
+filmNameAndPoint();
+yourFavoriteGenres();
+showMyDB();
