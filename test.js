@@ -23,14 +23,16 @@ menuNames.forEach(element => {
 let lorem = document.querySelector("p[name = 'lorem']");
 console.log(lorem.textContent);
 let loremText = lorem.textContent.trim();
-// console.log(loremText);
-// for(let i = 0; i < loremText.length; i++){
-//     if(loremText[i] == " "){
-//         loremText[i+1] = loremText.toUpperCase();
-//         console.log(loremText[i+1]);
-//     }
-// }
-// console.log(loremText);
+loremText = loremText.split("");
+
+console.log(loremText);
+for(let i = 0; i < loremText.length; i++){
+    if(loremText[i] == " "){
+        loremText[i+1] = loremText[i+1].toUpperCase();
+        console.log(loremText[i+1]);
+    }
+}
+console.log(loremText.join(""));
 lorem.style.color = "red";
 const numbers = document.querySelector("#numbers");
 numbers.style.color = "blue";
