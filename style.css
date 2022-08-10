@@ -4,6 +4,6 @@ body{
 #div{
     width: 100px;
     height: 100px;
-    background-image: url("./spiderman.png");
+    background-image: url("img/spiderman.png");
     border-radius: 10px;
 }
