@@ -4,7 +4,6 @@ body{
 #div{
     width: 100px;
     height: 100px;
-    border:2px solid black;
-    background: linear-gradient(115deg, rgb(215, 215, 215),grey,black,grey, black,grey, rgb(197, 197, 197));
+    background-image: url("./spiderman.png");
     border-radius: 10px;
 }
