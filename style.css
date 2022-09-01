@@ -1,22 +1,14 @@
-
 #div1{
-    width: 100px;
-    height: 100px;
-    left: 0;
-    background: green;
+    width: 250px;
+    height: 200px;
+    margin-left: 80vh;
+    margin-top: 30vh;
+    background: rgb(255, 255, 255);
     position: absolute;
-}
-#div2{
-    width: 100px;
-    height: 100px;
-    left: 0;
-    background: yellow;
-    position: absolute;
-}
-#someDiv{
-width: 100px;
-height: 100px;
-margin-left: 100px;
-border-radius: 50%;
-background: rgb(131, 131, 0);
+    border : 2px solid black;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
