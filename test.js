@@ -1,9 +1,9 @@
 const body = document.body;
 console.dir(window);
 const randomColors = function () {
-	r = Math.floor(Math.random() * 252);
-	g = Math.floor(Math.random() * 252);
-	b = Math.floor(Math.random() * 252);
+	r = Math.floor(Math.random() * 256);
+	g = Math.floor(Math.random() * 256);
+	b = Math.floor(Math.random() * 256);
 	return [r, g, b];
 }
 window.addEventListener("scroll", () => {
