@@ -1,14 +1,17 @@
-#div1{
-    width: 250px;
-    height: 200px;
-    margin-left: 80vh;
-    margin-top: 30vh;
-    background: rgb(255, 255, 255);
+*{
+    scroll-behavior: smooth;
+}
+body{
+    height: 2000px;
+}
+img{
     position: absolute;
-    border : 2px solid black;
+    margin-top: 1920px;
+    margin-left: 94%;
+    cursor: pointer;
+}
+h1{
+    width: 100%;
     text-align: center;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position:fixed;
 }

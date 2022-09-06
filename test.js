@@ -1,38 +1,17 @@
-function someDate(someDay, someMonth) {
-    const text = document.querySelector("#h2")
-    const date = new Date();
-    const newDate = new Date();
-    newDate.setMonth(someMonth);
-    newDate.setDate(someDay);
-    if (newDate > date) {
-        newDate.setFullYear(2021);
-    }
-    let day = (date - newDate) / 1000 / 3600 / 24;
-    let hour = 0;
-    let minutes = 0;
-    let seconds = 1;
-    const timer = setInterval(() => {
-        seconds--;
-        if (day == 0 && hour == 0 && minutes == 0 && seconds == 0) {
-            console.log("done");
-            clearInterval(timer)
-        } else {
-            if (hour == 0 && minutes == 0 && seconds == 0) {
-                hour = 24;
-                day--;
-            }
-            if (minutes == 0 && seconds == 0) {
-                minutes = 60;
-                hour--;
-            }
-            if (seconds == 0) {
-                seconds = 60;
-                minutes--;
-            }
-        }
-        text.textContent = `
-        ${day} : ${hour} : ${minutes} : ${seconds}
-        `
-    }, 1000)
+const body = document.body;
+console.dir(window);
+const randomColors = function () {
+	r = Math.floor(Math.random() * 252);
+	g = Math.floor(Math.random() * 252);
+	b = Math.floor(Math.random() * 252);
+	return [r, g, b];
 }
-someDate(31, 7)
+window.addEventListener("scroll", () => {
+	if (parseInt(window.scrollY) % 100 == 0) {
+		body.style.backgroundColor = `rgb(${randomColors()[0]}, ${randomColors()[1]}, ${randomColors()[2]})`
+		document.querySelector("h1").style.color = `rgb(${randomColors()[0]}, ${randomColors()[1]}, ${randomColors()[2]})`
+	}
+	document.querySelector("img").addEventListener("click", () => {
+		window.scrollTo(0, 0)
+	})
+})
