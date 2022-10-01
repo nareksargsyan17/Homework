@@ -1,17 +1,41 @@
-const body = document.body;
-console.dir(window);
-const randomColors = function () {
-	r = Math.floor(Math.random() * 256);
-	g = Math.floor(Math.random() * 256);
-	b = Math.floor(Math.random() * 256);
-	return [r, g, b];
-}
-window.addEventListener("scroll", () => {
-	if (parseInt(window.scrollY) % 100 == 0) {
-		body.style.backgroundColor = `rgb(${randomColors()[0]}, ${randomColors()[1]}, ${randomColors()[2]})`
-		document.querySelector("h1").style.color = `rgb(${randomColors()[0]}, ${randomColors()[1]}, ${randomColors()[2]})`
+//1
+class Animal {
+	say () {
+		if(this.constructor.name == "Dog"){
+			console.log("woof, woof");
+		}else if(this.constructor.name == "Cat"){
+			console.log("meow, meow");
+		}else{
+			console.log("rrr, I'm an animal");
+		}
 	}
-	document.querySelector("img").addEventListener("click", () => {
-		window.scrollTo(0, 0)
-	})
-})
+}
+
+class Dog extends Animal {
+}
+
+class Cat extends Animal {
+}
+
+const animal = new Animal();
+const dog = new Dog();
+const cat = new Cat();
+
+dog.say();
+cat.say();
+animal.say();
+
+class Restorant{
+	constructor(name, isOpen, menu, location){
+		this.name = name;
+		this.isOpen = isOpen;
+		this.menu = menu;
+		this.location = location;
+		this._workers = ["Anna", "Armine", "Karen", "Serob"];
+	}
+	#cardPassword = "res2575";
+	#sayData(){
+		console.log(this._workers);
+	}
+}
+console.log(new Restorant());
