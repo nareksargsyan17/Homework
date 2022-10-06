@@ -1,0 +1,17 @@
+{
+        "USD" : {
+            "name" : "USD",
+            "buy" : 406,
+            "sale" : 418
+        },
+        "EUR" : {
+            "name" : "EUR",
+            "buy" : 398,
+            "sale" : 411
+        },
+        "RUB" : {
+            "name" : "RUB",
+            "buy" : 6.3,
+            "sale" : 7.3
+        } 
+}
