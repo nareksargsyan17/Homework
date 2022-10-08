@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form > input{
+    width: 20%;
+    margin: 15px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 0.3px solid gray;
+    color: rgb(44, 44, 44);
+}
+form>input[type="email"]{
+    outline: none;
+}
+form>input[type="submit"]{
+    cursor: pointer;
+}
