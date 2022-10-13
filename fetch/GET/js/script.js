@@ -1,6 +1,3 @@
-const posts = "https://jsonplaceholder.typicode.com/posts";
-const comments = "https://jsonplaceholder.typicode.com/comments";
-const photos = "https://jsonplaceholder.typicode.com/photos";
 const post = document.querySelector("#post");
 const comment = document.querySelectorAll(".comment");
 const photo = document.querySelectorAll("#photo > div")
