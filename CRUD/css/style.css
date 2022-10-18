@@ -1,0 +1,89 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: 0;
+}
+
+body {
+	padding: 30px;
+	font-family: Arial;
+	background: #ddd;
+}
+
+#root {
+	padding: 30px;
+	background: #fff;
+	border-radius: 5px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+#screenBlock {
+	display: flex;
+	margin-bottom: 24px;
+}
+
+#screenBlock input {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px 0px 0px 5px;
+	width: 100%;
+}
+
+#screenBlock button {
+	background: #1a90ee;
+	color: #fff;
+	border: none;
+	padding: 0px 8px;
+	cursor: pointer;
+	border-radius: 0px 5px 5px 0px;
+}
+
+#listsBlock .listsBlock__item {
+	display: grid;
+	grid-template-columns: 9fr 1fr 1fr;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+#listsBlock .listsBlock__item p span {
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+button[data-rm],[data-up]{
+	padding: 4px 4px 1px 4px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background: transparent;
+	color: #fff;
+}
+button[data-rm]:hover{
+    background-color: red;
+}
+button[data-up]:hover{
+    background-color:rgb(12, 183, 12);
+}
+button > img{
+    width: 18px;
+    height: 18px;
+}
+.edit{
+	margin-top: 10px;
+	padding: 8px;
+	border-radius:8px 0px 0px 8px;
+	border:0.1px solid #ccc;
+}
+.editBtn{
+	margin-top: 10px;
+	padding: 6px;
+	border-radius: 0px 8px 8px 0px;
+	color:rgb(255, 255, 255);
+	cursor: pointer;
+	background-color:#1a90ee;
+}
+#editDiv{
+	width: 100%;
+}
