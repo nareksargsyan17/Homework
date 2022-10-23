@@ -11,7 +11,7 @@ body {
 	background: #ddd;
 }
 
-#root{
+#root {
 	padding: 30px;
 	background: #fff;
 	border-radius: 5px;
@@ -19,56 +19,49 @@ body {
 	margin: 0 auto;
 }
 
-#screenBlock {
+#root #app-form #screenBlock {
 	display: flex;
 	margin-bottom: 24px;
 }
-
-#screenBlock input {
+#root #app-form #screenBlock input {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px 0px 0px 5px;
 	width: 100%;
 }
 
-#screenBlock button {
-	background: #1a90ee;
-	color: #fff;
-	border: none;
+#root #app-form #screenBlock #screenAddBtn {
+	background: #1a91d2;
+	border-radius: 0px 5px 5px 0px;
 	padding: 0px 8px;
 	cursor: pointer;
-	border-radius: 0px 5px 5px 0px;
+	color: #fff;
+	border: none;
 }
 
-#listsBlock .listsBlock__item {
+#root #listBlock .listsBlockItem {
 	display: flex;
 	align-items: center;
-	margin-bottom: 16px;
 	justify-content: space-between;
+	margin-bottom: 12px;
 }
-#forInp{
-	width: 100%;
-	display: flex;
-	align-items:center;
-	justify-content: space-between;
-}
-#forInp form{
+#list{
 	width: 93%;
 	display: flex;
 	align-items:center;
 }
-#forInp span {
+#listBlock .listsBlockItem span {
 	margin-right: 10px;
 	font-weight: bold;
 }
-#forInp input{
+#listBlock .listsBlockItem input{
 	padding: 7px 8px;
 	border: 1px solid transparent;
 	width: 88%;
 	margin: 0px 8px;
 	border-radius: 8px;
 }
-#forInp button{
+#listBlock .listsBlockItem button{
 	right: 0;
 }
 
@@ -115,4 +108,16 @@ button > img{
 }
 #editDiv{
 	width: 100%;
+}
+h1 {
+	margin-bottom: 12px;
+	text-align: center;
+	color: #555;
+	letter-spacing: 1.5px;
+}
+
+p {
+	margin: 20px 0px;
+	text-align: center;
+	color: #566;
 }

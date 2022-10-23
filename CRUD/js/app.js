@@ -1,9 +1,8 @@
-const root = document.querySelector("#root");
-
+const root = document.querySelector("#root")
 const screenBlock = document.createElement("div");
 const screenInput = document.createElement("input");
 const screenBtnAdd = document.createElement("button");
-
+const rootForm = document.querySelector("#rootForm")
 const listsBlock = document.createElement("div");
 
 screenBlock.id = "screenBlock";
@@ -13,106 +12,122 @@ screenBtnAdd.textContent = "ADD";
 
 listsBlock.id = "listsBlock";
 
-root.prepend(screenBlock);
+rootForm.prepend(screenBlock);
 root.append(listsBlock);
 screenBlock.append(screenInput, screenBtnAdd);
 const url = "http://localhost:7777/todo/";
-
-root.addEventListener("submit", function (e) {
+function fetching(url, todoID = "", method, fBody = "") {
+	fetch(todoID == "" ? url : url + todoID, {
+		method: `${method}`,
+		headers: {
+			"content-type": "application/json"
+		},
+		body: fBody
+	});
+}
+rootForm.addEventListener("submit", function (e) {
 	e.preventDefault();
 	const val = screenInput.value.trim();
-
 	if (val !== "") {
-		fetch(url, {
-			method: "POST",
-			headers: {
-				"content-type" : "application/json"
-			},
-			body: JSON.stringify({title: val})
-		});
+		fetching(url, "", "POST", `${JSON.stringify({ title: val, complete: false })}`);
 	}
-
 	this.reset();
 });
-
+console.log();
 fetch(url)
-.then(data => data.json())
-.then(data => {
-	data.forEach(todoObj => {
-		listsBlock.innerHTML += `
+	.then(data => data.json())
+	.then(data => {
+		data.forEach(todoObj => {
+			listsBlock.innerHTML += `
 			<div class="listsBlock__item">
-				<p>
-					<span>${todoObj.id}</span>
-					${todoObj.title}
-				</p>
-                <button data-up>
-                    <img src="icons8-edit-24.png">
-                </button>
-				<button data-rm>
-                    <img src="icons8-delete-30.png">
-                </button>
+				<div id="forInp">
+				<form id="form">
+				<span>${todoObj.id}</span>
+				<input type="text" value="${todoObj.title}" readonly>
+					<button data-sv type="submit">
+						<img src="icons/save.png">
+					</button>
+				</form>
+					<button data-up style="display:${!todoObj.complete ? 'inline-block' : 'none'}">
+					<img src="icons/edit.png">
+					</button>
+					
+					<button data-rm>
+						<img src="icons/delete.png">
+					</button>
+
+					<button data-dn>
+						<img src="${!todoObj.complete ? 'icons/done.png' : 'icons/end.png'}">
+					</button>
+				</div>
 			</div>
 		`;
-	});
-
-	return data;
-})
-.then(data => {
-	const removeBtnsArray = document.querySelectorAll("[data-rm]");
-
-	removeBtnsArray.forEach(btn => {
-		btn.addEventListener("click", function () {
-			this.parentElement.remove();
-
-			data.forEach(todoObj => {
-				const fakeId = this.previousElementSibling.firstElementChild.textContent;
-
-				if (parseInt(fakeId) === todoObj.id) {
-					fetch(url+todoObj.id, {
-						method: "DELETE",
-						headers: {
-							"content-type" : "application/json"
-						}
-					});
-				}
-			});
 		});
+		return data;
 	})
-    return data
-})
-.then(data =>{
-    const editeBtnsArray = document.querySelectorAll("[data-up]");
-	let val;
-    editeBtnsArray.forEach(btn =>{
-        btn.addEventListener("click", function () {
-			if(this.nextElementSibling.nextElementSibling !== null){
-				document.querySelector("#editDiv").remove();
-			}else{
-				btn.parentElement.insertAdjacentHTML("beforeend", `
-				<div id="editDiv">
-				<input type="text" class="edit" placeholder="Type Title">
-				<button class="editBtn">EDIT</button>
-				</div>`);
-				document.querySelector(".editBtn").addEventListener("click", function(){
-					val = this.previousElementSibling.value;
-					if(val != ""){
+	.then(data => {
+		const removeBtns = document.querySelectorAll("[data-rm]");
+		removeBtns.forEach(btn => {
+			btn.addEventListener("click", function (e) {
+				e.preventDefault();
+				this.parentElement.parentElement.remove();
+				data.forEach(todoObj => {
+					const fakeId = this.parentElement.firstElementChild.firstElementChild.textContent;
+					if (parseInt(fakeId) === todoObj.id) {
+						fetching(url, todoObj.id, "DELETE");
+					}
+				});
+			});
+		})
+		return data
+	})
+	.then(data => {
+		const editeBtns = document.querySelectorAll("[data-up]");
+		const saveBtns = document.querySelectorAll("[data-sv]");
+		const input = document.querySelectorAll("#forInp >form> input");
+		let val;
+		editeBtns.forEach((btn, index) => {
+			btn.addEventListener("click", function () {
+				btn.style.display = "none";
+				saveBtns[index].style.display = "inline-block"
+				console.log(input[index].parentElement);
+				input[index].removeAttribute("readonly");
+				input[index].style.border = "1px solid #5e5656";
+				input[index].parentElement.addEventListener("submit", function (e) {
+					e.preventDefault();
+					btn.style.display = "inline-block";
+					saveBtns[index].style.display = "none";
+					input[index].setAttribute("readonly", "");
+					input[index].style.border = "0.5px solid transparent";
+					val = input[index].value;
+					if (val != "") {
 						data.forEach(todoObj => {
-							const fakeId = btn.parentElement.firstElementChild.textContent;
+							const fakeId = input[index].previousElementSibling.textContent;
 							if (parseInt(fakeId) === todoObj.id) {
-								fetch(url+todoObj.id, {
-									method: "PATCH",
-									body: JSON.stringify({
-										title: `${val}`,
-									}),
-									headers: {
-										"content-type" : "application/json"
-									}
-								});
+								fetching(url, todoObj.id, "PATCH", `${JSON.stringify({ title: val })}`)
 							}
 						});
 					}
 				})
+			});
+		})
+		return data;
+	})
+	.then(data => {
+		const doneBtns = document.querySelectorAll("[data-dn]");
+		doneBtns.forEach((btn, index) => {
+			btn.addEventListener("click", (e) => {
+				btn.firstElementChild.src = "icons/end.png";
+				if (!data[index].complete) {
+					btn.parentElement.firstElementChild.style.display = "none";
+					fetching(url, data[index].id, "PUT", `${JSON.stringify({ ...data[index], complete: true })}`)
+				}
+			})
+			if (data[index].complete) {
+				btn.addEventListener("mouseover", function () {
+					this.style.cursor = "no-drop"
+					this.style.backgroundColor = "transparent";
+				});
 			}
-		});
-    })
-})
+		})
+	})

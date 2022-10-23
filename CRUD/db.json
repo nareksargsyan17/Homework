@@ -1,23 +1,28 @@
 {
   "todo": [
     {
-      "title": "Learn JavaScript",
+      "title": "Learn HTML",
+      "complete": true,
       "id": 1
     },
     {
       "title": "Learn CSS",
+      "complete": true,
       "id": 2
     },
     {
-      "title": "Learn More",
+      "title": "Learn JavaScript",
+      "complete": true,
       "id": 3
     },
     {
-      "title": "",
+      "title": "Learn React JS",
+      "complete": false,
       "id": 4
     },
     {
-      "title": "55",
+      "title": "Learn vsyo",
+      "complete": false,
       "id": 5
     }
   ]
