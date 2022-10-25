@@ -16,16 +16,6 @@
       "id": 4
     },
     {
-      "title": "Learn Vue JS",
-      "complete": false,
-      "id": 5
-    },
-    {
-      "title": "Learn C++",
-      "complete": false,
-      "id": 7
-    },
-    {
       "title": "Learn PHP",
       "complete": false,
       "id": 8
@@ -39,6 +29,11 @@
       "title": "Learn JavaScript",
       "id": 10,
       "complete": true
+    },
+    {
+      "title": "Learn Vue JS",
+      "complete": true,
+      "id": 11
     }
   ]
 }

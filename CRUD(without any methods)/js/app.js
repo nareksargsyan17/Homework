@@ -41,6 +41,9 @@ function GET(url) {
 	fetch(url)
 		.then(data => data.json())
 		.then(data => {
+			data.sort(function(a,b){
+				return a.complete < b.complete ? 1 : a.complete > b.complete ? -1 : 0;
+			})
 			data.forEach(element => {
 				UI.listsBlock.innerHTML += `
 					<div class="listsBlockItem">
@@ -63,13 +66,15 @@ function GET(url) {
 					</div>
 				`
 			})
+			
 			return data;
 		})
-		.then(data => PATCH(url, "PATCH", data))
-		.then(data => DELETE(url, "DELETE"))
-		.then(data => PUT(url, "PUT"))
+		.then(data => {
+			PATCH(url, "PATCH", data);
+			DELETE(url, "DELETE");
+			PUT(url, "PUT");
+		})
 }
-GET(url);
 function POST(url, method, body) {
 	fetch(url, {
 		method: method,
@@ -82,9 +87,9 @@ function POST(url, method, body) {
 UI.form.addEventListener("submit", function (e) {
 	e.preventDefault();
 	const val = UI.screenInput.value.trim();
-	POST(url, "POST", `${JSON.stringify({ title: val, complete: false })}`)
+	POST(url, "POST", `${JSON.stringify({ title: val, complete: false})}`)
 })
-
+GET(url);
 function DELETE(url, method) {
 	const removeBtns = document.querySelectorAll(".listsBlockItem > [data-rm]");
 	removeBtns.forEach(elem => {
@@ -113,7 +118,7 @@ function PUT(url, method) {
 			console.log(input[index].parentElement);
 			input[index].removeAttribute("readonly");
 			input[index].style.border = "1px solid #5e5656";
-			input[index].parentElement.addEventListener("submit", function (e) {
+			input[index].parentElement.addEventListener("submit", async function (e) {
 				e.preventDefault();
 				btn.style.display = "inline-block";
 				saveBtns[index].style.display = "none";
@@ -121,12 +126,12 @@ function PUT(url, method) {
 				input[index].style.border = "0.5px solid transparent";
 				val = input[index].value;
 				const id = btn.parentElement.firstElementChild.textContent;
-				fetch(url + id, {
+				await fetch(url + id, {
 					method: method,
 					headers: {
 						"content-type": "application/json"
 					},
-					body: JSON.stringify({title: val})
+					body: JSON.stringify({title: val, complete: false})
 				})
 			})
 		})
@@ -138,12 +143,12 @@ function PATCH(url, method, data) {
 	const doneBtns = document.querySelectorAll("[data-dn]");
 	const editeBtns = document.querySelectorAll("[data-up]");
 	doneBtns.forEach((btn, index) => {
-		btn.addEventListener("click", () => {
+		btn.addEventListener("click", async () => {
 			btn.firstElementChild.src = "icons/end.png";
 			if (!data[index].complete) {
 				editeBtns[index].firstElementChild.style.display = "none";
 				const id = btn.parentElement.firstElementChild.textContent;
-				fetch(url + id, {
+				await fetch(url + id, {
 					method: method,
 					headers: {
 						"content-type": "application/json"
