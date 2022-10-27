@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "json-server db.json -p 7777 -w true"
+    "start": "webpack-cli",
+    "dev" : "json-server db.json -p 7777 -w true"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "json-server": "^0.17.0"
+    "json-server": "^0.17.0",
+    "webpack-cli": "^4.10.0"
   }
 }

@@ -16,13 +16,8 @@
       "id": 4
     },
     {
-      "title": "Learn PHP",
-      "complete": false,
-      "id": 8
-    },
-    {
-      "title": "Learn Angular",
-      "complete": false,
+      "title": "Learn Angular+",
+      "complete": true,
       "id": 9
     },
     {
