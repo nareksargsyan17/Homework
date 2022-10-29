@@ -16,19 +16,9 @@
       "id": 4
     },
     {
-      "title": "Learn Angular+",
-      "complete": true,
-      "id": 9
-    },
-    {
-      "title": "Learn JavaScript",
-      "id": 10,
-      "complete": true
-    },
-    {
-      "title": "Learn Vue JS",
-      "complete": true,
-      "id": 11
+      "title": "Learn Python",
+      "complete": false,
+      "id": 5
     }
   ]
 }

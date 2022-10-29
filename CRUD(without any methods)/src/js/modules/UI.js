@@ -7,6 +7,7 @@ const UI = {
 	screenBlock: document.createElement("div"),
 	screenInput: document.createElement("input"),
 	screenAddBtn: document.createElement("button"),
+	selectBlock: document.createElement("div"),
 	listsBlock: document.createElement("div"),
 
 	elementOptions() {
@@ -16,15 +17,32 @@ const UI = {
 		this.screenBlock.id = "screenBlock";
 		this.screenInput.type = "text";
 		this.screenInput.placeholder = "Type here...";
-		this.screenAddBtn.textContent = "ADD";
+		this.screenAddBtn.innerHTML = "<img src='./icons/add.png'>"
 		this.screenAddBtn.id = "screenAddBtn";
+		this.selectBlock.id = "selectBlock";
 		this.listsBlock.id = "listBlock";
 	},
 
 	appendElements() {
-		root.append(this.title, this.subTitle, this.form, this.listsBlock);
+		root.append(this.title, this.subTitle, this.form,this.selectBlock, this.listsBlock);
 		this.form.append(this.screenBlock);
 		this.screenBlock.append(this.screenInput, this.screenAddBtn);
+	},
+	selectMethod(){
+		this.selectBlock.innerHTML=`
+			<div id="completed">
+			<p>Completed </p>
+			<div class ="check"></div>
+			</div>
+			<div id="nCompleted">
+			<p>Not Completed </p>
+			<div class ="check"></div>
+			</div>
+			<div id="all">
+			<p>All</p>
+			<div class ="check checked"></div>
+			</div>
+		`
 	},
 	toHTML(id, title, complete){
 		this.listsBlock.innerHTML += `
