@@ -21,7 +21,7 @@ function SELECT(state = "", UI, PATCH, PUT, DELETE) {
         }).then(data => {
             PATCH(data);
             PUT();
-            DELETE();
+            DELETE(url);
         })
 }
 module.exports = SELECT;

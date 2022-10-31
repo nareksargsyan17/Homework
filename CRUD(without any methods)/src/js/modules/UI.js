@@ -31,16 +31,16 @@ const UI = {
 	selectMethod(){
 		this.selectBlock.innerHTML=`
 			<div id="completed">
-			<p>Completed </p>
-			<div class ="check"></div>
+				<img class ="check" src="./icons/end.png">
 			</div>
 			<div id="nCompleted">
-			<p>Not Completed </p>
-			<div class ="check"></div>
+				<img class ="check" src="./icons/done.png">
+			</div>
+			<div id="trash">
+				<img class ="check" src="./icons/delete.png">
 			</div>
 			<div id="all">
-			<p>All</p>
-			<div class ="check checked"></div>
+				<img class ="check all checked" src="./icons/all.png">
 			</div>
 		`
 	},
@@ -55,10 +55,26 @@ const UI = {
 							</button>
 						</form>
 						<button data-up style="display:${!complete ? 'inline-block' : 'none'}">
-							<img src="./icons/edit.png">
+						<img src="./icons/edit.png">
 						</button>
 						<button data-rm>
-							<img src="./icons/delete.png">
+							<img src='./icons/delete.png'>
+						</button>
+						<button data-dn>
+							<img src="${!complete ? './icons/done.png' : './icons/end.png'}">
+						</button>
+					</div>
+				`
+	},
+	toHTMLTrash(id, title, complete){
+		this.listsBlock.innerHTML += `
+					<div class="listsBlockItem">
+						<span>${id}</span>
+						<form id="list">
+							<input type = "text" value="${title}" readonly>
+						</form>
+						<button data-rm>
+							<img src='./icons/delete.png'>
 						</button>
 						<button data-dn>
 							<img src="${!complete ? './icons/done.png' : './icons/end.png'}">

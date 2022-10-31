@@ -7,8 +7,7 @@ function PUT() {
 	editeBtns.forEach((btn, index) => {
 		btn.addEventListener("click", function () {
 			btn.style.display = "none";
-			saveBtns[index].style.display = "inline-block"
-			console.log(input[index].parentElement);
+			saveBtns[index].style.display = "inline-block";
 			input[index].removeAttribute("readonly");
 			input[index].style.border = "1px solid #5e5656";
 			input[index].parentElement.addEventListener("submit", async function (e) {
